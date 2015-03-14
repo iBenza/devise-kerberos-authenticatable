@@ -11,10 +11,6 @@ module Devise
         end
       end
 
-      def clean_up_passwords
-        self.password = nil
-      end
-
       def valid_kerberos_authentication?(password)
         Devise::KerberosAdapter.valid_credentials?(self.username, password)
       end
