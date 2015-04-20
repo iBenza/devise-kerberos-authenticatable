@@ -10,6 +10,9 @@ module Devise
   #Kerberos realm to use
   mattr_accessor :kerberos_realm
   @@kerberos_realm = ""
+
+  mattr_accessor :kerberos_create_user
+  @@ldap_create_user = true
 end
 
 Devise.add_module(
