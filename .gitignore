@@ -1,5 +1,8 @@
 *.gem
 
+# vagrant
+.vagrant
+
 # Ignore bundler files
 /.bundle
 vendor/bundle
