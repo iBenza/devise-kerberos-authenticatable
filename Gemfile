@@ -5,4 +5,7 @@ gemspec
 
 group :development, :test do
   gem 'rspec'
+  gem 'rspec-rails'
+  gem 'rails', '4.2.4'
+  gem 'sqlite3'
 end
