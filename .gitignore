@@ -1,1 +1,11 @@
 *.gem
+
+# Ignore bundler files
+/.bundle
+vendor/bundle
+
+# Ignore rails files
+/spec/rails_app/db/*.sqlite3
+/spec/rails_app/db/*.sqlite3-journal
+/spec/rails_app/log/*.log
+/spec/rails_app/tmp
