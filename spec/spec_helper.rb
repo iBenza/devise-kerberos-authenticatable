@@ -10,5 +10,6 @@ RSpec.configure do |config|
   config.before(:suite) do
     puts "Starting up virtual machine..."
     `VAGRANT_CWD=#{File.expand_path('../vagrant', __FILE__)} vagrant up`
+    ENV['KRB5_CONFIG'] ||= File.expand_path('../vagrant/krb5.conf.local', __FILE__)
   end
 end
