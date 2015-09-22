@@ -7,4 +7,9 @@ RSpec.describe 'rails_app project' do
       expect(Rails.root.to_s).to match(/spec\/rails_app/)
     end
   end
+
+  describe 'Devise settings' do
+    subject { Devise.mappings[:user] }
+    it { should be_truthy }
+  end
 end
