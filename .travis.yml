@@ -1,0 +1,17 @@
+bundler_args: "--jobs=3 --retry=3 --without development --without production --deployment"
+language: ruby
+sudo: false
+rvm:
+- 2.1.4
+addons:
+  apt:
+    packages:
+    - virtualbox
+    - vagrant
+before_install:
+- 'echo ''gem: --no-ri --no-rdoc'' > ~/.gemrc'
+install:
+- bundle install
+script:
+- bundle exec rake -f spec/rails_app/Rakefile db:create db:migrate
+- bundle exec rspec
