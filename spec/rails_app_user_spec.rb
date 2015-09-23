@@ -22,8 +22,7 @@ RSpec.describe 'rails_app project' do
     end
 
     describe 'User is not in database' do
-      before { User.create(name: 'pig') }
-      subject { User.authenticate_with_kerberos(name: 'pig', password: 'oink') }
+      subject { User.authenticate_with_kerberos(name: 'dog', password: 'bowwow') }
       it { should be_nil }
     end
   end
