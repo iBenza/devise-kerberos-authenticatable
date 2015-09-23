@@ -26,15 +26,12 @@ module Devise
           auth_key_value = (self.case_insensitive_keys || []).include?(auth_key) ? attributes[auth_key].downcase : attributes[auth_key]
           auth_key_value = (self.strip_whitespace_keys || []).include?(auth_key) ? auth_key_value.strip : auth_key_value
 
-          resource = where(auth_key => auth_key_value).first
-          return nil unless resource.valid_kerberos_authentication?(attributes[:password])
+          resource = where(auth_key => auth_key_value).first_or_initialize
 
-          if resource.blank?
-            resource = new
-            resource[auth_key] = auth_key_value
-          end
-
-          if ::Devise.kerberos_create_user && resource.new_record?
+          if !resource.valid_kerberos_authentication?(attributes[:password])
+            return nil
+          elsif resource.new_record?
+            return nil unless ::Devise.kerberos_create_user
             resource.save!
           end
           resource
