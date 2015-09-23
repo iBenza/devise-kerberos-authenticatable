@@ -27,12 +27,14 @@ module Devise
           auth_key_value = (self.strip_whitespace_keys || []).include?(auth_key) ? auth_key_value.strip : auth_key_value
 
           resource = where(auth_key => auth_key_value).first
+          return nil unless resource.valid_kerberos_authentication?(attributes[:password])
+
           if resource.blank?
             resource = new
             resource[auth_key] = auth_key_value
           end
 
-          if ::Devise.kerberos_create_user && resource.new_record? && resource.valid_kerberos_authentication?(attributes[:password])
+          if ::Devise.kerberos_create_user && resource.new_record?
             resource.save!
           end
           resource
