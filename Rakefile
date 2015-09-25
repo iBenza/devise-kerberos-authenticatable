@@ -17,3 +17,7 @@ namespace 'vagrant' do
     end
   end
 end
+
+namespace 'rails_app' do
+  load File.expand_path('../spec/rails_app/Rakefile', __FILE__)
+end
