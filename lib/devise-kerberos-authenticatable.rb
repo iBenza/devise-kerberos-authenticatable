@@ -12,7 +12,7 @@ module Devise
   @@kerberos_realm = ""
 
   mattr_accessor :kerberos_create_user
-  @@ldap_create_user = true
+  @@kerberos_create_user = false
 end
 
 Devise.add_module(
