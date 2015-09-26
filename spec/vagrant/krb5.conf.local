@@ -1,3 +1,6 @@
+[libdefaults]
+default_realm = TG2KRB5.COM
+
 [realms]
 TG2KRB5.COM = {
   kdc = localhost:10088

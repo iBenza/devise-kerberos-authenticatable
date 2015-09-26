@@ -1,4 +1,5 @@
 require 'devise'
+require 'krb5_auth'
 
 $: << File.expand_path('..', __FILE__)
 
@@ -9,7 +10,7 @@ require 'devise_kerberos_authenticatable/kerberos_adapter'
 module Devise
   #Kerberos realm to use
   mattr_accessor :kerberos_realm
-  @@kerberos_realm = ""
+  @@kerberos_realm = Krb5Auth::Krb5.new.get_default_realm
 
   mattr_accessor :kerberos_create_user
   @@kerberos_create_user = false

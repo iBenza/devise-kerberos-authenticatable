@@ -1,3 +1,5 @@
+ENV['KRB5_CONFIG'] ||= File.expand_path('../vagrant/krb5.conf.local', __FILE__)
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -7,9 +9,6 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
-  config.before(:suite) do
-    ENV['KRB5_CONFIG'] ||= File.expand_path('../vagrant/krb5.conf.local', __FILE__)
-  end
 end
 
 def restore_default_settings!
