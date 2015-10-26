@@ -1,10 +1,9 @@
 require 'krb5_auth'
-include Krb5Auth
 
 module Devise
   module KerberosAdapter
     def self.valid_credentials?(username, password)
-      krb5 = Krb5.new
+      krb5 = Krb5Auth::Krb5.new
       username_with_realm = "#{username}@#{::Devise.kerberos_realm}"
       begin
         krb5.get_init_creds_password(username_with_realm, password)
