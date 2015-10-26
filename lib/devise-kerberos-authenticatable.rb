@@ -10,7 +10,11 @@ require 'devise_kerberos_authenticatable/kerberos_adapter'
 module Devise
   #Kerberos realm to use
   mattr_accessor :kerberos_realm
-  @@kerberos_realm = Krb5Auth::Krb5.new.get_default_realm
+  begin
+    @@kerberos_realm = Krb5Auth::Krb5.new.get_default_realm
+  rescue
+    @@kerberos_realm = 'EXAMPLE.COM'
+  end
 
   mattr_accessor :kerberos_create_user
   @@kerberos_create_user = false
